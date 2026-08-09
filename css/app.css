@@ -7,3 +7,23 @@ button,input,textarea{font:inherit}.hero{min-height:260px;padding:30px;display:g
 .adminToggle{border:0;background:transparent;color:#789080;text-decoration:underline;margin:auto;display:block;font-weight:850;cursor:pointer}#adminPanel,#adminResults{display:none;margin-top:16px}.row{border-bottom:1px solid #edf1ed;padding:10px 0}.pill{display:inline-block;background:#eef8ec;color:var(--dark);border-radius:999px;padding:5px 9px;margin:5px 4px 0 0;font-size:13px;font-weight:850}.statusPill{display:inline-block;border-radius:999px;padding:5px 10px;font-weight:900}.sOk{background:#e8f7e8;color:#12651f}.sNo{background:#fdeaea;color:#9d1c1c}.sOpen{background:#fff4d8;color:#8a5a00}
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;padding:18px;touch-action:pan-y}.lightbox.open{display:flex}.lightbox img{max-width:94vw;max-height:82vh;border-radius:12px}.lbClose{position:fixed;top:14px;right:18px;width:44px;height:44px;border:0;border-radius:999px;background:rgba(255,255,255,.16);color:#fff;font-size:30px}.lbNav{position:fixed;top:50%;transform:translateY(-50%);width:56px;height:72px;border:0;border-radius:16px;background:rgba(255,255,255,.14);color:#fff;font-size:58px}.lbPrev{left:18px}.lbNext{right:18px}.lbCounter{position:fixed;top:18px;left:18px;color:#fff;background:rgba(255,255,255,.16);border-radius:999px;padding:8px 13px;font-weight:900}.lbText{position:fixed;left:18px;right:18px;bottom:18px;color:#fff;text-align:center;font-weight:850}footer{text-align:center;background:var(--dark);color:#fff;padding:13px;font-weight:800}
 @media(max-width:850px){.hero{grid-template-columns:1fr;padding:22px}.dateCard{min-width:0}.stats{grid-template-columns:repeat(2,1fr)}.bringGrid{grid-template-columns:repeat(2,1fr)}.houseGrid{grid-template-columns:repeat(2,1fr)}.choiceGrid{grid-template-columns:1fr}.galleryGrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.wrap{padding:0 10px 25px}.panel{padding:15px;border-radius:18px}.hero{min-height:245px}.hero h1{font-size:40px}.hero h2{font-size:30px}.bringGrid,.houseGrid,.galleryGrid{grid-template-columns:1fr}.galleryItem img{height:210px}.lbNav{display:none}.yearNav{overflow-x:auto;flex-wrap:nowrap}.yearNav button{flex:0 0 auto}}
+
+/* V9.1 Progressive Skeletons */
+@keyframes shimmer{
+  0%{background-position:-220px 0}
+  100%{background-position:220px 0}
+}
+.skeletonCard,.skeletonHouse,.skeletonFood,.skeletonImage{
+  overflow:hidden;
+  background:#edf2ed;
+  background-image:linear-gradient(90deg,#edf2ed 0,#f7faf7 40%,#edf2ed 80%);
+  background-size:440px 100%;
+  animation:shimmer 1.15s infinite linear;
+}
+.skeletonCard{min-height:72px;border:1px solid #e3eee3;border-radius:13px}
+.skeletonHouse{min-height:78px;border:1px solid var(--line);border-radius:16px}
+.skeletonFood{height:62px;border-bottom:1px solid #edf1ed}
+.gallerySkeletonGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:12px 0}
+.skeletonImage{height:140px;border-radius:14px}
+@media(max-width:850px){.gallerySkeletonGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.gallerySkeletonGrid{grid-template-columns:1fr}.skeletonImage{height:210px}}

@@ -53,6 +53,6 @@ window.Gallery = (function(){
   lb.addEventListener("touchstart",function(e){ if(e.changedTouches.length){startX=e.changedTouches[0].screenX;startY=e.changedTouches[0].screenY;} },{passive:true});
   lb.addEventListener("touchend",function(e){ if(!e.changedTouches.length)return; const dx=e.changedTouches[0].screenX-startX,dy=e.changedTouches[0].screenY-startY; if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)){dx<0?next(e):prev(e);}else if(dy>90&&Math.abs(dy)>Math.abs(dx)){close();} },{passive:true});
 
-  load();
+  window.setTimeout(function(){ load(); }, 650);
   return {load,jump,open,prev,next,close};
 })();

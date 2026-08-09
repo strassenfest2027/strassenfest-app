@@ -9,17 +9,29 @@ window.App = (function(){
     try{
       const res = await API.call("bootstrap");
       data = res;
+
       renderHeader();
       renderDashboard(res.dashboard || {});
-      renderHouses();
-      renderFoods();
-      resetItems();
-      setAttendance("Noch offen");
+
+      window.requestAnimationFrame(function(){
+        renderHouses();
+        renderFoods();
+        resetItems();
+        setAttendance("Noch offen");
+      });
     }catch(err){
-      document.getElementById("bringList").innerHTML = '<div class="empty">Daten konnten nicht geladen werden: '+H.esc(err.message)+'</div>';
-      document.getElementById("houseGrid").innerHTML = '<div class="empty">Bitte Seite neu laden.</div>';
-      document.getElementById("foodList").innerHTML = '<div class="empty">Bitte Seite neu laden.</div>';
+      renderLoadError(err);
     }
+  }
+
+  function renderLoadError(err){
+    document.getElementById("bringList").innerHTML =
+      '<div class="empty">Daten konnten nicht geladen werden. Bitte Seite neu laden.</div>';
+    document.getElementById("houseGrid").innerHTML =
+      '<div class="empty">Hausnummern konnten nicht geladen werden.</div>';
+    document.getElementById("foodList").innerHTML =
+      '<div class="empty">Speisen konnten nicht geladen werden.</div>';
+    console.error(err);
   }
 
   function renderHeader(){

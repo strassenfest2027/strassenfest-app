@@ -12,7 +12,7 @@
 <header class="hero">
   <div class="heroShade"></div>
   <div class="heroInner">
-    <div class="version">V9.0</div>
+    <div class="version">V9.2</div>
     <h1 id="eventTitle">3. Straßenfest 2027</h1>
     <h2 id="eventSubtitle">Anmeldung & Essensliste</h2>
     <p id="eventSlogan">Gemeinsam feiern – gemeinsam genießen!</p>
@@ -40,14 +40,14 @@
     </div>
     <div class="publicBox">
       <h3>🥗 Was wird mitgebracht?</h3>
-      <div id="bringList" class="bringGrid"><div class="skeleton">Daten werden geladen …</div></div>
+      <div id="bringList" class="bringGrid"><div class="skeletonCard"></div><div class="skeletonCard"></div><div class="skeletonCard"></div></div>
     </div>
   </section>
 
   <section class="panel">
     <h2>1. Hausnummer/Familie auswählen</h2>
     <p class="hint">Bitte wähle deinen Eintrag aus.</p>
-    <div id="houseGrid" class="houseGrid"><div class="skeleton">Hausnummern werden geladen …</div></div>
+    <div id="houseGrid" class="houseGrid"><div class="skeletonHouse"></div><div class="skeletonHouse"></div><div class="skeletonHouse"></div><div class="skeletonHouse"></div><div class="skeletonHouse"></div><div class="skeletonHouse"></div></div>
     <div id="selectedBox" class="selectedBox"></div>
   </section>
 
@@ -68,7 +68,7 @@
 
   <section class="panel">
     <h2>3. Essenswünsche</h2>
-    <div id="foodList"><div class="skeleton">Speisen werden geladen …</div></div>
+    <div id="foodList"><div class="skeletonFood"></div><div class="skeletonFood"></div><div class="skeletonFood"></div><div class="skeletonFood"></div></div>
     <label class="bringLabel" for="bring">🥗 Ich bringe mit <small>(für alle sichtbar)</small></label>
     <textarea id="bring" placeholder="z. B. Kartoffelsalat, Kuchen, Baguette ..."></textarea>
     <button class="save" onclick="App.save()">✓ Speichern</button>
@@ -81,7 +81,7 @@
       <button class="secondary" onclick="Gallery.load()">🔄 Bilder neu laden</button>
     </div>
     <div id="galleryYearNav" class="yearNav"></div>
-    <div id="galleryContainer"><div class="skeleton">Bilder werden geladen …</div></div>
+    <div id="galleryContainer"><div class="gallerySkeletonGrid"><div class="skeletonImage"></div><div class="skeletonImage"></div><div class="skeletonImage"></div><div class="skeletonImage"></div></div></div>
   </section>
 
   <section class="panel admin">
@@ -113,7 +113,7 @@
   <div id="lbText" class="lbText"></div>
 </div>
 
-<footer>♡ Straßenfest-App V9.0</footer>
+<footer>♡ Straßenfest-App V9.2</footer>
 <script src="config.js"></script>
 <script src="js/api.js"></script>
 <script src="js/helpers.js"></script>
