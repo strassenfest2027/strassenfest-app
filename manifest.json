@@ -1,13 +1,16 @@
 {
   "name": "Straßenfest App",
   "short_name": "Straßenfest",
+  "id": "./",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f6f8f3",
   "theme_color": "#145a1f",
+  "description": "Straßenfest-App für Anmeldung, Essensliste und Rückblick",
   "icons": [
     {
-      "src": "assets/icon.svg",
+      "src": "assets/icons/app-icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"

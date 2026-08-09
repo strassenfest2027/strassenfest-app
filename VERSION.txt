@@ -1,2 +1,3 @@
-Straßenfest Web-App V9.2
-Direkt-Deploy-Paket für GitHub Desktop
+Straßenfest Web-App V10.0
+Frontend: GitHub Pages
+Backend: Google Apps Script V9.1 kompatibel
