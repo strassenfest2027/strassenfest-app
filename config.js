@@ -1,4 +1,5 @@
-// Hier den aktuellen Google-Apps-Script-Link deiner Straßenfest-App eintragen.
+// Nur diese Datei musst du normalerweise für die Verbindung zur Google-Apps-Script-App ändern.
 window.STRASSENFEST_CONFIG = {
-  APP_URL: "https://script.google.com/macros/s/AKfycby6-Knj4BS2gJ1ZdSZwKvD3XM7NIkEGIFjYIGmsksLRbh1kDZZlYQi4-Ck5y6SBfRHBrQ/exec"
+  APP_URL: "https://strassenfest2027.github.io/strassenfest-app/",
+  VERSION: "8.1"
 };

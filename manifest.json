@@ -1,14 +1,16 @@
 {
   "name": "Straßenfest App",
   "short_name": "Straßenfest",
-  "start_url": "./index.html",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#0b3d14",
+  "background_color": "#07380f",
   "theme_color": "#16651f",
   "description": "Straßenfest-App",
   "icons": [
     {
-      "src": "icon.svg",
+      "src": "assets/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"

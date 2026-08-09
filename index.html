@@ -8,125 +8,49 @@
   <meta name="apple-mobile-web-app-title" content="Straßenfest">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/app.css">
   <title>Straßenfest</title>
-  <style>
-    :root{--green:#16651f;--dark:#07380f;--soft:#eef9ed}
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#0b3d14;color:white}
-    .shell{position:fixed;inset:0;display:grid;grid-template-rows:auto 1fr;background:#0b3d14}
-    .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;background:linear-gradient(135deg,#07380f,#16651f);box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:5}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:950}
-    .brandIcon{width:34px;height:34px;border-radius:11px;background:#bdf08a;color:#07380f;display:grid;place-items:center;font-size:20px}
-    .brandText{line-height:1.05}
-    .brandText small{display:block;font-weight:750;opacity:.85;font-size:12px}
-    .actions{display:flex;gap:8px}
-    button{border:0;border-radius:999px;background:rgba(255,255,255,.14);color:white;font-weight:900;padding:9px 12px;cursor:pointer}
-    button.primary{background:#bdf08a;color:#07380f}
-    .stage{position:relative;background:#f6f8f3}
-    iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#f6f8f3}
-    .loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0b3d14,#2f8f3c);z-index:3;transition:opacity .3s ease,visibility .3s ease;padding:20px}
-    .loader.hidden{opacity:0;visibility:hidden}
-    .card{width:min(420px,92vw);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:24px;padding:26px;text-align:center;box-shadow:0 16px 50px rgba(0,0,0,.28)}
-    .icon{font-size:52px;margin-bottom:6px}
-    h1{margin:0 0 6px;font-size:28px}
-    p{margin:0;color:rgba(255,255,255,.9);font-weight:700}
-    .bar{height:9px;background:rgba(255,255,255,.25);border-radius:999px;overflow:hidden;margin-top:20px}
-    .bar span{display:block;height:100%;width:45%;background:#bdf08a;border-radius:999px;animation:move 1.1s infinite ease-in-out}
-    .hint{font-size:13px;margin-top:14px;opacity:.86}
-    .fallback{display:inline-block;margin-top:16px;color:#07380f;background:white;border-radius:999px;padding:11px 16px;text-decoration:none;font-weight:950}
-    .error{display:none;margin-top:14px;background:rgba(255,255,255,.14);border-radius:14px;padding:12px;font-size:14px}
-    @keyframes move{0%{transform:translateX(-110%)}100%{transform:translateX(260%)}}
-    @media(max-width:560px){
-      .top{padding:10px 11px}
-      .brandText span{font-size:15px}
-      button{padding:8px 10px;font-size:13px}
-    }
-  </style>
 </head>
 <body>
   <div class="shell">
-    <div class="top">
+    <header class="topbar">
       <div class="brand">
-        <div class="brandIcon">🍖</div>
-        <div class="brandText">
-          <span>Straßenfest</span>
-          <small>App wird geladen</small>
-        </div>
-      </div>
-      <div class="actions">
-        <button onclick="reloadApp()">🔄</button>
-        <button class="primary" onclick="openOriginal()">Öffnen</button>
-      </div>
-    </div>
-
-    <div class="stage">
-      <div id="loader" class="loader">
-        <div class="card">
-          <div class="icon">🍖🍺</div>
-          <h1>Straßenfest wird geladen…</h1>
-          <p>Einen kleinen Moment bitte.</p>
-          <div class="bar"><span></span></div>
-          <div class="hint">Die App startet gleich.</div>
-          <a id="fallbackLink" class="fallback" href="#" target="_self">Direkt öffnen</a>
-          <div id="errorBox" class="error">Falls die App nicht lädt, bitte oben auf „Öffnen“ tippen.</div>
+        <div class="brand-icon">🍖</div>
+        <div class="brand-copy">
+          <strong>Straßenfest</strong>
+          <small id="appStatus">wird geladen …</small>
         </div>
       </div>
 
-      <iframe id="appFrame" title="Straßenfest App" allow="fullscreen"></iframe>
-    </div>
+      <div class="top-actions">
+        <button class="icon-button" id="reloadBtn" type="button" aria-label="App neu laden">🔄</button>
+      </div>
+    </header>
+
+    <main class="stage">
+      <section class="loader" id="loader" aria-live="polite">
+        <div class="loader-card">
+          <div class="loader-icon">🍖🍺</div>
+          <h1>Straßenfest wird geladen …</h1>
+          <p>Die App ist gleich bereit.</p>
+          <div class="loader-bar"><span></span></div>
+          <div class="loader-note" id="loaderNote">Verbindung wird hergestellt.</div>
+        </div>
+      </section>
+
+      <iframe
+        id="appFrame"
+        title="Straßenfest App"
+        allow="fullscreen"
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
+    </main>
   </div>
 
   <script src="config.js"></script>
-  <script>
-    const frame = document.getElementById('appFrame');
-    const loader = document.getElementById('loader');
-    const fallback = document.getElementById('fallbackLink');
-    const errorBox = document.getElementById('errorBox');
-
-    function getAppUrl(){
-      return (window.STRASSENFEST_CONFIG && window.STRASSENFEST_CONFIG.APP_URL) || "";
-    }
-
-    function start(){
-      const url = getAppUrl();
-      if(!url || url.includes("DEINE-APP-URL")){
-        errorBox.style.display = "block";
-        errorBox.textContent = "Bitte zuerst in config.js den Link zur Straßenfest-App eintragen.";
-        return;
-      }
-
-      fallback.href = url;
-      frame.src = url;
-
-      frame.addEventListener('load', () => {
-        setTimeout(() => loader.classList.add('hidden'), 350);
-        document.querySelector('.brandText small').textContent = "Bereit";
-      }, {once:true});
-
-      setTimeout(() => {
-        if(!loader.classList.contains('hidden')){
-          errorBox.style.display = "block";
-        }
-      }, 9000);
-    }
-
-    function reloadApp(){
-      loader.classList.remove('hidden');
-      errorBox.style.display = "none";
-      const url = getAppUrl();
-      frame.src = url + (url.includes("?") ? "&" : "?") + "t=" + Date.now();
-    }
-
-    function openOriginal(){
-      const url = getAppUrl();
-      if(url) location.href = url;
-    }
-
-    if('serviceWorker' in navigator){
-      navigator.serviceWorker.register('sw.js').catch(() => {});
-    }
-
-    start();
-  </script>
+  <script src="js/helpers.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/pwa.js"></script>
 </body>
 </html>
