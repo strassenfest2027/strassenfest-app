@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#145a1f">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/app.css">
+  <title>Straßenfest</title>
+</head>
+<body>
+<header class="hero">
+  <div class="heroShade"></div>
+  <div class="heroInner">
+    <div class="version">V9.0</div>
+    <h1 id="eventTitle">3. Straßenfest 2027</h1>
+    <h2 id="eventSubtitle">Anmeldung & Essensliste</h2>
+    <p id="eventSlogan">Gemeinsam feiern – gemeinsam genießen!</p>
+  </div>
+  <div class="dateCard">
+    <div><b>📅 Haupttermin</b><span id="mainDate">26.06.2027</span></div>
+    <div><b>🌧️ Ausweichtermin</b><span id="backupDate">03.07.2027</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel dashboard">
+    <div class="sectionHead">
+      <div>
+        <h2>📊 Straßenfest-Dashboard</h2>
+        <p>Aktueller Stand für alle Nachbarn.</p>
+      </div>
+      <button class="secondary" onclick="App.refreshDashboard()">🔄 Aktualisieren</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="statPersons">–</b><span>Personen zugesagt</span></div>
+      <div class="stat"><b id="statDone">–</b><span>Rückmeldungen</span></div>
+      <div class="stat"><b id="statFood">–</b><span>Essensportionen</span></div>
+      <div class="stat"><b id="statBring">–</b><span>Mitbringsel</span></div>
+    </div>
+    <div class="publicBox">
+      <h3>🥗 Was wird mitgebracht?</h3>
+      <div id="bringList" class="bringGrid"><div class="skeleton">Daten werden geladen …</div></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>1. Hausnummer/Familie auswählen</h2>
+    <p class="hint">Bitte wähle deinen Eintrag aus.</p>
+    <div id="houseGrid" class="houseGrid"><div class="skeleton">Hausnummern werden geladen …</div></div>
+    <div id="selectedBox" class="selectedBox"></div>
+  </section>
+
+  <section class="panel">
+    <h2>2. Teilnahme</h2>
+    <div class="choiceGrid">
+      <button id="btnKommt" onclick="App.setAttendance('Kommt')">✅ Kommt</button>
+      <button id="btnNein" onclick="App.setAttendance('Kommt nicht')">❌ Kommt nicht</button>
+      <button id="btnOffen" onclick="App.setAttendance('Noch offen')">⏳ Noch offen</button>
+    </div>
+    <div class="personRow">
+      <strong>Personen:</strong>
+      <button onclick="App.changePersons(-1)">−</button>
+      <span id="persons">0</span>
+      <button onclick="App.changePersons(1)">+</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>3. Essenswünsche</h2>
+    <div id="foodList"><div class="skeleton">Speisen werden geladen …</div></div>
+    <label class="bringLabel" for="bring">🥗 Ich bringe mit <small>(für alle sichtbar)</small></label>
+    <textarea id="bring" placeholder="z. B. Kartoffelsalat, Kuchen, Baguette ..."></textarea>
+    <button class="save" onclick="App.save()">✓ Speichern</button>
+    <div id="status"></div>
+  </section>
+
+  <section class="panel retrospective">
+    <div class="sectionHead">
+      <h2>📸 Rückblick unserer Straßenfeste</h2>
+      <button class="secondary" onclick="Gallery.load()">🔄 Bilder neu laden</button>
+    </div>
+    <div id="galleryYearNav" class="yearNav"></div>
+    <div id="galleryContainer"><div class="skeleton">Bilder werden geladen …</div></div>
+  </section>
+
+  <section class="panel admin">
+    <button class="adminToggle" onclick="Admin.toggle()">🔒 Organisatoren / Adminbereich</button>
+    <div id="adminPanel">
+      <label>Admin-PIN</label>
+      <input id="pin" type="password" inputmode="numeric" placeholder="PIN">
+      <button class="save" onclick="Admin.load()">Übersicht laden</button>
+      <div id="adminStatus"></div>
+      <div id="adminResults">
+        <h3>🛒 Einkaufsliste</h3>
+        <div id="shoppingList"></div>
+        <h3>⏳ Noch keine Rückmeldung</h3>
+        <div id="adminOpenList"></div>
+        <h3>👥 Teilnehmerstatus</h3>
+        <input id="search" type="search" placeholder="Suchen..." oninput="Admin.renderParticipants()">
+        <div id="participants"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="lightbox" class="lightbox">
+  <button class="lbClose" onclick="Gallery.close()">×</button>
+  <button class="lbNav lbPrev" onclick="Gallery.prev(event)">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lbNav lbNext" onclick="Gallery.next(event)">›</button>
+  <div id="lbCounter" class="lbCounter"></div>
+  <div id="lbText" class="lbText"></div>
+</div>
+
+<footer>♡ Straßenfest-App V9.0</footer>
+<script src="config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/helpers.js"></script>
+<script src="js/app.js"></script>
+<script src="js/gallery.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
