@@ -10,7 +10,7 @@ window.Admin = (function(){
     const pin=document.getElementById("pin").value;
     document.getElementById("adminStatus").textContent="Lade …";
     try{
-      const r=await API.call("summary",{pin:pin});
+      const r=await API.read("summary",{pin:pin});
       summary=r.summary;
       document.getElementById("adminResults").style.display="block";
       document.getElementById("adminStatus").textContent="✅ Geladen";

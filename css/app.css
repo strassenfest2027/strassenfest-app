@@ -27,3 +27,6 @@ button,input,textarea{font:inherit}.hero{min-height:260px;padding:30px;display:g
 .skeletonImage{height:140px;border-radius:14px}
 @media(max-width:850px){.gallerySkeletonGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.gallerySkeletonGrid{grid-template-columns:1fr}.skeletonImage{height:210px}}
+
+/* V10.1 Reliable Data */
+.syncInfo{display:none;margin:0 0 12px;padding:10px 12px;border:1px solid #dbeadb;border-radius:12px;background:#f7fbf6;color:#49644f;font-size:14px;font-weight:750}.syncInfo.syncError{border-color:#efd9a6;background:#fff8e8;color:#735314}

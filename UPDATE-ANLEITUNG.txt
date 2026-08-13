@@ -1,0 +1,15 @@
+STRASSENFEST-APP – UPDATE-KURZANLEITUNG
+
+1. ZIP entpacken.
+2. GitHub Desktop öffnen.
+3. Show in Explorer.
+4. Inhalt der ZIP in den lokalen Ordner strassenfest-app kopieren.
+5. Vorhandene Dateien ersetzen.
+6. GitHub Desktop: Summary eintragen.
+7. Commit to main.
+8. Push origin.
+9. Kurz warten und App neu öffnen.
+
+Apps Script nur ändern, wenn bei einer Version ausdrücklich darauf hingewiesen wird.
+
+Aktuelle Version: V10.1

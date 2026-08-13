@@ -6,22 +6,26 @@ window.App = (function(){
   let persons = 0;
 
   async function boot(){
-    try{
-      const res = await API.call("bootstrap");
-      data = res;
-
-      renderHeader();
-      renderDashboard(res.dashboard || {});
-
-      window.requestAnimationFrame(function(){
-        renderHouses();
-        renderFoods();
-        resetItems();
-        setAttendance("Noch offen");
-      });
-    }catch(err){
-      renderLoadError(err);
+    const cached = DataCache.get("bootstrap");
+    if(cached && cached.value){
+      data=cached.value; renderHeader(); renderDashboard(data.dashboard||{}); renderHouses(); renderFoods(); resetItems(); setAttendance("Noch offen");
+      showSyncInfo("Gespeicherte Daten angezeigt – Aktualisierung läuft …", false);
     }
+    try{
+      const res=await API.read("bootstrap"); data=res; DataCache.set("bootstrap",res); renderHeader(); renderDashboard(res.dashboard||{}); renderHouses(); renderFoods();
+      if(!cached){resetItems();setAttendance("Noch offen");}
+      showSyncInfo("",false);
+    }catch(err){
+      if(cached&&cached.value) showSyncInfo("Aktuelle Daten konnten nicht geladen werden. Es werden die zuletzt gespeicherten Daten angezeigt.",true);
+      else renderLoadError(err);
+    }
+  }
+
+  function showSyncInfo(text,isError){
+    let box=document.getElementById("syncInfo");
+    if(!box){box=document.createElement("div");box.id="syncInfo";box.className="syncInfo";const dash=document.querySelector(".dashboard");if(dash)dash.insertBefore(box,dash.firstChild);}
+    if(!text){box.style.display="none";box.textContent="";return;}
+    box.style.display="block";box.classList.toggle("syncError",!!isError);box.textContent=text;
   }
 
   function renderLoadError(err){
@@ -56,8 +60,12 @@ window.App = (function(){
   }
 
   async function refreshDashboard(){
-    try{ const r = await API.call("dashboard"); renderDashboard(r.dashboard || {}); }
-    catch(err){ alert(err.message); }
+    try{
+      showSyncInfo("Dashboard wird aktualisiert …",false);
+      const r=await API.read("dashboard"); renderDashboard(r.dashboard||{});
+      const cached=DataCache.get("bootstrap"); if(cached&&cached.value){cached.value.dashboard=r.dashboard||{};DataCache.set("bootstrap",cached.value);}
+      showSyncInfo("",false);
+    }catch(err){showSyncInfo("Dashboard konnte nicht aktualisiert werden. Bitte später erneut versuchen.",true);}
   }
 
   function renderHouses(){
@@ -89,7 +97,7 @@ window.App = (function(){
     status("Lade Eintrag …");
 
     try{
-      const r = await API.call("entry", {key:key});
+      const r = await API.read("entry", {key:key});
       const e = r.entry || {};
       items = e.items || {};
       (data.foods || []).forEach(function(f){ if(typeof items[f] === "undefined") items[f] = 0; });
@@ -141,10 +149,12 @@ window.App = (function(){
     status("Speichere …");
     try{
       const payload = {key:selectedKey,attendance:attendance,persons:persons,items:items,bring:document.getElementById("bring").value};
-      const r = await API.call("save",{payload:JSON.stringify(payload)});
+      const r = await API.write("save",{payload:JSON.stringify(payload)});
       status("✅ Gespeichert. Danke!");
-      if(r.result && r.result.dashboard) renderDashboard(r.result.dashboard);
-      else refreshDashboard();
+      if(r.result && r.result.dashboard){
+        renderDashboard(r.result.dashboard);
+        const cached=DataCache.get("bootstrap"); if(cached&&cached.value){cached.value.dashboard=r.result.dashboard;DataCache.set("bootstrap",cached.value);}
+      } else refreshDashboard();
     }catch(err){ status("❌ Fehler beim Speichern: "+err.message); }
   }
 

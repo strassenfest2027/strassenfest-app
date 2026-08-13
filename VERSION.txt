@@ -1,3 +1,4 @@
-Straßenfest Web-App V10.0
+Straßenfest Web-App V10.1
 Frontend: GitHub Pages
 Backend: Google Apps Script V9.1 kompatibel
+Schwerpunkt: Reliable Data / Retry + lokaler Cache

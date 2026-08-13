@@ -4,19 +4,14 @@ window.Gallery = (function(){
   let startX = 0, startY = 0;
 
   async function load(){
-    const box = document.getElementById("galleryContainer");
-    box.innerHTML = '<div class="skeleton">Bilder werden geladen …</div>';
+    const box=document.getElementById("galleryContainer"); const cached=DataCache.get("gallery");
+    if(cached&&Array.isArray(cached.value)){images=cached.value;render();}
+    else box.innerHTML='<div class="gallerySkeletonGrid"><div class="skeletonImage"></div><div class="skeletonImage"></div><div class="skeletonImage"></div><div class="skeletonImage"></div></div>';
     try{
-      const r = await API.call("gallery");
-      images = (r.items || []).slice().sort(function(a,b){
-        const ya = Number(a.year)||0, yb = Number(b.year)||0;
-        if(ya !== yb) return yb - ya;
-        return String(a.title||"").localeCompare(String(b.title||""),"de",{sensitivity:"base",numeric:true});
-      });
-      render();
-    }catch(err){
-      box.innerHTML = '<div class="empty">Bilder konnten nicht geladen werden: '+H.esc(err.message)+'</div>';
-    }
+      const r=await API.read("gallery");
+      images=(r.items||[]).slice().sort(function(a,b){const ya=Number(a.year)||0,yb=Number(b.year)||0;if(ya!==yb)return yb-ya;return String(a.title||"").localeCompare(String(b.title||""),"de",{sensitivity:"base",numeric:true});});
+      DataCache.set("gallery",images);render();
+    }catch(err){if(!cached)box.innerHTML='<div class="empty">Bilder konnten momentan nicht geladen werden. Bitte später erneut versuchen.</div>';}
   }
 
   function render(){
