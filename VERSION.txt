@@ -1,4 +1,4 @@
-Straßenfest Web-App V10.2
+Straßenfest Web-App V10.3
 Frontend: GitHub Pages
 Backend: Google Apps Script V9.1 kompatibel
-Neu: Hilfe / FAQ + Home-Bildschirm-Anleitung
+Neu: Administrator-Hilfe direkt im freigeschalteten Adminbereich

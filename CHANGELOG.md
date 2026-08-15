@@ -1,5 +1,12 @@
 # Changelog
 
+## V10.3 – Administrator-Hilfe
+- Anleitung für Administratoren direkt in die App integriert.
+- Der Button „Anleitung für Administratoren“ erscheint erst nach erfolgreicher Freischaltung des Adminbereichs.
+- Enthält Teilnehmerübersicht, Stammdatenpflege, Bilder, Dashboard, technische Updates und Zugriffsübersicht.
+- Öffentliche Nachbarn sehen diese Admin-Anleitung nicht.
+- Backend unverändert; keine Änderung an Code.gs nötig.
+
 ## V10.2 – Hilfe / FAQ
 - Neuer, direkt sichtbarer Button „Hilfe / FAQ“ im oberen Bereich.
 - Kurzanleitung zur Nutzung direkt in der App integriert.

@@ -13,7 +13,7 @@
 <header class="hero">
   <div class="heroShade"></div>
   <div class="heroInner">
-    <div class="version">V10.2</div>
+    <div class="version">V10.3</div>
     <h1 id="eventTitle">3. Straßenfest 2027</h1>
     <h2 id="eventSubtitle">Anmeldung & Essensliste</h2>
     <p id="eventSlogan">Gemeinsam feiern – gemeinsam genießen!</p>
@@ -111,6 +111,51 @@
 </main>
 
 
+
+<div id="adminHelpModal" class="helpModal" aria-hidden="true">
+  <div class="helpDialog" role="dialog" aria-modal="true" aria-labelledby="adminHelpTitle">
+    <button class="helpClose" type="button" onclick="AdminHelp.close()" aria-label="Admin-Hilfe schließen">×</button>
+    <h2 id="adminHelpTitle">🔐 Anleitung für Administratoren</h2>
+
+    <div class="faqItem"><h3>Admin-Übersicht</h3>
+      <p>Nach Eingabe der Admin-PIN können die Organisatoren die internen Übersichten laden. Dazu gehören insbesondere Teilnehmerstatus, Einkaufsliste und „Noch keine Rückmeldung“.</p>
+    </div>
+
+    <div class="faqItem"><h3>Teilnehmer kontrollieren</h3>
+      <p>Hier kann geprüft werden, welche Familie zugesagt oder abgesagt hat, mit wie vielen Personen sie kommt, welche Speisen gewünscht werden und was zusätzlich mitgebracht wird.</p>
+    </div>
+
+    <div class="faqItem"><h3>Wenn ein Nachbar etwas ändern möchte</h3>
+      <p>Normalerweise muss der Administrator nichts ändern. Der Nachbar wählt in der öffentlichen App erneut seine Hausnummer/Familie aus, korrigiert die Angaben und speichert erneut.</p>
+    </div>
+
+    <div class="faqItem"><h3>Hausnummern, Familien und Speisen</h3>
+      <p>Diese Stammdaten werden direkt in der Google-Tabelle gepflegt. Dafür ist kein GitHub-Update erforderlich.</p>
+    </div>
+
+    <div class="faqItem"><h3>Rückblick-Bilder</h3>
+      <p>Neue Fotos werden in Google Drive im Ordner „Straßenfest Bilder“ in den passenden Jahres-Unterordner geladen. Danach in der App „Bilder neu laden“ verwenden.</p>
+    </div>
+
+    <div class="faqItem"><h3>Dashboard aktualisieren</h3>
+      <p>Bei neuen Rückmeldungen den Aktualisieren-Button verwenden. Die App versucht außerdem automatisch, aktuelle Daten nachzuladen.</p>
+    </div>
+
+    <div class="faqItem installBox"><h3>Technische Updates der App</h3>
+      <p><b>Nur für den technischen Administrator:</b> Neue ZIP entpacken → GitHub Desktop → „Show in Explorer“ → Dateien in den Ordner <b>strassenfest-app</b> kopieren und ersetzen → „Commit to main“ → „Push origin“.</p>
+      <p>Google Apps Script nur ändern, wenn bei einer neuen Version ausdrücklich darauf hingewiesen wird.</p>
+    </div>
+
+    <div class="faqItem"><h3>Wer braucht welchen Zugriff?</h3>
+      <p><b>Admin-Übersicht:</b> Admin-PIN<br>
+      <b>Hausnummern/Familien/Speisen:</b> Google-Tabelle<br>
+      <b>Bilder:</b> Google Drive<br>
+      <b>Programm-Update:</b> GitHub Desktop<br>
+      <b>Backend:</b> Google Apps Script – nur bei Bedarf</p>
+    </div>
+  </div>
+</div>
+
 <div id="helpModal" class="helpModal" aria-hidden="true">
   <div class="helpDialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
     <button class="helpClose" type="button" onclick="Help.close()" aria-label="Hilfe schließen">×</button>
@@ -177,7 +222,7 @@
   <div id="lbText" class="lbText"></div>
 </div>
 
-<footer>♡ Straßenfest-App V10.2</footer>
+<footer>♡ Straßenfest-App V10.3</footer>
 <script src="config.js"></script>
 <script src="js/api.js"></script>
 <script src="js/helpers.js"></script>
@@ -186,6 +231,7 @@
 <script src="js/gallery.js"></script>
 <script src="js/admin.js"></script>
 <script src="js/help.js"></script>
+<script src="js/admin-help.js"></script>
   <script src="js/pwa.js"></script>
 </body>
 </html>
