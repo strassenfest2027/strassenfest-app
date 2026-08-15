@@ -1,4 +1,4 @@
-const CACHE_NAME = "strassenfest-v10-1";
+const CACHE_NAME = "strassenfest-v10-2";
 
 const CORE = [
   "./",
@@ -12,6 +12,7 @@ const CORE = [
   "./js/app.js",
   "./js/gallery.js",
   "./js/admin.js",
+  "./js/help.js",
   "./js/pwa.js",
   "./assets/icons/app-icon.svg"
 ];

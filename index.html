@@ -13,7 +13,7 @@
 <header class="hero">
   <div class="heroShade"></div>
   <div class="heroInner">
-    <div class="version">V10.1</div>
+    <div class="version">V10.2</div>
     <h1 id="eventTitle">3. Straßenfest 2027</h1>
     <h2 id="eventSubtitle">Anmeldung & Essensliste</h2>
     <p id="eventSlogan">Gemeinsam feiern – gemeinsam genießen!</p>
@@ -23,6 +23,11 @@
     <div><b>🌧️ Ausweichtermin</b><span id="backupDate">03.07.2027</span></div>
   </div>
 </header>
+
+<div class="quickHelpBar">
+  <button class="helpButton" type="button" onclick="Help.open()">❓ Hilfe / FAQ</button>
+</div>
+
 
 <main class="wrap">
   <section class="panel dashboard">
@@ -105,6 +110,64 @@
   </section>
 </main>
 
+
+<div id="helpModal" class="helpModal" aria-hidden="true">
+  <div class="helpDialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+    <button class="helpClose" type="button" onclick="Help.close()" aria-label="Hilfe schließen">×</button>
+    <h2 id="helpTitle">❓ Hilfe / FAQ</h2>
+
+    <div class="faqItem">
+      <h3>Wie trage ich mich ein?</h3>
+      <p>Eigene Hausnummer/Familie auswählen, Teilnahme und Personenzahl eintragen, Essenswünsche auswählen und anschließend auf <b>„Speichern“</b> tippen.</p>
+    </div>
+
+    <div class="faqItem">
+      <h3>Kann ich meine Angaben später ändern?</h3>
+      <p>Ja. Einfach die App erneut öffnen, wieder die eigene Hausnummer/Familie auswählen, Angaben ändern und erneut speichern.</p>
+    </div>
+
+    <div class="faqItem">
+      <h3>Was bedeutet „Ich bringe mit“?</h3>
+      <p>Hier können zusätzliche Dinge wie Kartoffelsalat, Kuchen oder Baguette eingetragen werden. Diese Einträge sind für alle sichtbar, damit nicht mehrfach dasselbe mitgebracht wird.</p>
+    </div>
+
+    <div class="faqItem">
+      <h3>Wie sehe ich neue Daten oder Bilder?</h3>
+      <p>Im Dashboard auf <b>„Aktualisieren“</b> bzw. im Rückblick auf <b>„Bilder neu laden“</b> tippen.</p>
+    </div>
+
+    <div class="faqItem installBox">
+      <h3>📱 App auf dem Home-Bildschirm speichern</h3>
+      <p>Dann lässt sie sich später fast wie eine normale App starten.</p>
+
+      <div class="platformHelp">
+        <h4>iPhone / iPad (Safari)</h4>
+        <ol>
+          <li>Die Straßenfest-App in <b>Safari</b> öffnen.</li>
+          <li>Unten auf das <b>Teilen-Symbol</b> (Quadrat mit Pfeil nach oben) tippen.</li>
+          <li>Nach unten scrollen und <b>„Zum Home-Bildschirm“</b> auswählen.</li>
+          <li>Auf <b>„Hinzufügen“</b> tippen.</li>
+        </ol>
+      </div>
+
+      <div class="platformHelp">
+        <h4>Android (Chrome)</h4>
+        <ol>
+          <li>Die Straßenfest-App in <b>Chrome</b> öffnen.</li>
+          <li>Oben rechts auf die <b>drei Punkte ⋮</b> tippen.</li>
+          <li><b>„Zum Startbildschirm hinzufügen“</b> oder <b>„App installieren“</b> auswählen.</li>
+          <li>Mit <b>„Hinzufügen“ / „Installieren“</b> bestätigen.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="faqItem">
+      <h3>Die App zeigt kurz alte Daten – ist das normal?</h3>
+      <p>Die App kann zuletzt geladene Daten sofort anzeigen und aktualisiert sie anschließend automatisch im Hintergrund.</p>
+    </div>
+  </div>
+</div>
+
 <div id="lightbox" class="lightbox">
   <button class="lbClose" onclick="Gallery.close()">×</button>
   <button class="lbNav lbPrev" onclick="Gallery.prev(event)">‹</button>
@@ -114,7 +177,7 @@
   <div id="lbText" class="lbText"></div>
 </div>
 
-<footer>♡ Straßenfest-App V10.1</footer>
+<footer>♡ Straßenfest-App V10.2</footer>
 <script src="config.js"></script>
 <script src="js/api.js"></script>
 <script src="js/helpers.js"></script>
@@ -122,6 +185,7 @@
 <script src="js/app.js"></script>
 <script src="js/gallery.js"></script>
 <script src="js/admin.js"></script>
+<script src="js/help.js"></script>
   <script src="js/pwa.js"></script>
 </body>
 </html>

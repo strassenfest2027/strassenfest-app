@@ -1,5 +1,14 @@
 # Changelog
 
+## V10.2 – Hilfe / FAQ
+- Neuer, direkt sichtbarer Button „Hilfe / FAQ“ im oberen Bereich.
+- Kurzanleitung zur Nutzung direkt in der App integriert.
+- Anleitung für Installation auf dem Home-Bildschirm ergänzt.
+- iOS: Safari → Teilen → Zum Home-Bildschirm → Hinzufügen.
+- Android: Chrome → Drei Punkte → Zum Startbildschirm hinzufügen / App installieren.
+- Hilfe funktioniert als eigenes Modal und beeinflusst die restliche App nicht.
+- Backend unverändert; keine Änderung an Code.gs nötig.
+
 ## V10.1 – Reliable Data
 - Automatische Wiederholungsversuche bei Lesezugriffen.
 - Wiederholungen nach 1, 2 und 4 Sekunden.
