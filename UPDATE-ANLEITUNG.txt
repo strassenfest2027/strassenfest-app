@@ -13,4 +13,4 @@ Normales Frontend-Update:
 
 Apps Script nur ändern, wenn bei einer Version ausdrücklich darauf hingewiesen wird.
 
-Aktuelle Version: V10.4
+Aktuelle Version: V10.4a

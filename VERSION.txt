@@ -1,4 +1,4 @@
-Straßenfest Web-App V10.4
+Straßenfest Web-App V10.4a
 Frontend: GitHub Pages
 Backend: Google Apps Script V9.1 kompatibel
-Neu: Admin-Hilfe sichtbar nach PIN + einklappbare Rückblick-Jahre
+Korrektur: Versionsanzeige aktualisiert

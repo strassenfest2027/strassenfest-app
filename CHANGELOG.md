@@ -1,5 +1,11 @@
 # Changelog
 
+## V10.4a – Versionsanzeige korrigiert
+- Verbliebene V10.3-Anzeige entfernt.
+- Versionsanzeige auf V10.4a gesetzt.
+- Service-Worker-Cache erneut erhöht, damit Browser die neue Anzeige sicher übernehmen.
+- Funktional identisch zu V10.4.
+
 ## V10.4 – Admin-Hilfe Fix + einklappbare Galerie
 - Admin-Hilfe korrigiert: Button erscheint direkt im erfolgreich geladenen Adminbereich nach PIN-Eingabe.
 - Admin-Hilfe bleibt für öffentliche Besucher unsichtbar.
@@ -11,7 +17,7 @@
 - Neueste Jahre bleiben oben, Bilder A–Z sortiert.
 - Backend unverändert; Code.gs muss nicht geändert werden.
 
-## V10.3 – Administrator-Hilfe
+## V10.4a – Administrator-Hilfe
 - Anleitung für Administratoren direkt in die App integriert.
 - Der Button „Anleitung für Administratoren“ erscheint erst nach erfolgreicher Freischaltung des Adminbereichs.
 - Enthält Teilnehmerübersicht, Stammdatenpflege, Bilder, Dashboard, technische Updates und Zugriffsübersicht.

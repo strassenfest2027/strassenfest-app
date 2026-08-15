@@ -1,4 +1,4 @@
-const CACHE_NAME = "strassenfest-v10-4";
+const CACHE_NAME = "strassenfest-v10-4a";
 
 const CORE = [
   "./",
