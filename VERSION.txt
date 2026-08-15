@@ -1,4 +1,4 @@
-Straßenfest Web-App V10.3
+Straßenfest Web-App V10.4
 Frontend: GitHub Pages
 Backend: Google Apps Script V9.1 kompatibel
-Neu: Administrator-Hilfe direkt im freigeschalteten Adminbereich
+Neu: Admin-Hilfe sichtbar nach PIN + einklappbare Rückblick-Jahre

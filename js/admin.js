@@ -15,6 +15,7 @@ window.Admin = (function(){
       document.getElementById("adminResults").style.display="block";
       document.getElementById("adminStatus").textContent="✅ Geladen";
       renderShopping(); renderOpen(); renderParticipants();
+      if(window.AdminHelp) AdminHelp.ensureButton();
     }catch(err){ document.getElementById("adminStatus").textContent="❌ "+err.message; }
   }
 

@@ -164,3 +164,51 @@ body.modalOpen{overflow:hidden}
   cursor:pointer;
 }
 .adminHelpButton:hover{background:#eaf6e8}
+
+/* V10.4 Einklappbare Rückblick-Jahre */
+.galleryYearToggle{
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr auto auto;
+  gap:12px;
+  align-items:center;
+  border:0;
+  padding:15px 16px;
+  background:linear-gradient(135deg,#e7f8e4,#fff);
+  color:var(--dark);
+  cursor:pointer;
+  text-align:left;
+  font-weight:950;
+  font-size:22px;
+}
+.galleryYearToggle:hover{background:linear-gradient(135deg,#ddf4d9,#f8fff7)}
+.galleryYearCount{
+  color:var(--muted);
+  font-size:13px;
+  font-weight:850;
+}
+.galleryChevron{
+  width:30px;
+  text-align:center;
+  font-size:23px;
+}
+.galleryYearBody{
+  display:none;
+  border-top:1px solid var(--line);
+}
+.galleryYearBody.open{display:block}
+.galleryYear.open{box-shadow:0 7px 20px rgba(0,0,0,.05)}
+@media(max-width:600px){
+  .galleryYearToggle{
+    grid-template-columns:1fr auto;
+    font-size:19px;
+  }
+  .galleryYearCount{
+    grid-column:1/2;
+    grid-row:2;
+  }
+  .galleryChevron{
+    grid-column:2;
+    grid-row:1/3;
+  }
+}

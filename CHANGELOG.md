@@ -1,5 +1,16 @@
 # Changelog
 
+## V10.4 – Admin-Hilfe Fix + einklappbare Galerie
+- Admin-Hilfe korrigiert: Button erscheint direkt im erfolgreich geladenen Adminbereich nach PIN-Eingabe.
+- Admin-Hilfe bleibt für öffentliche Besucher unsichtbar.
+- Rückblick-Jahre sind beim Start vollständig eingeklappt.
+- Klick auf ein Jahr öffnet nur dessen Bilder.
+- Erneuter Klick klappt den Bereich wieder ein.
+- Jahresnavigation oben öffnet und scrollt direkt zum gewünschten Jahr.
+- Bildanzahl wird bereits im eingeklappten Jahreskopf angezeigt.
+- Neueste Jahre bleiben oben, Bilder A–Z sortiert.
+- Backend unverändert; Code.gs muss nicht geändert werden.
+
 ## V10.3 – Administrator-Hilfe
 - Anleitung für Administratoren direkt in die App integriert.
 - Der Button „Anleitung für Administratoren“ erscheint erst nach erfolgreicher Freischaltung des Adminbereichs.
